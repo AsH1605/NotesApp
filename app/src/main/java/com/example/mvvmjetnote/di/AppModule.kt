@@ -7,6 +7,7 @@ import com.example.mvvmjetnote.feature_note.data.data_source.NoteDatabase
 import com.example.mvvmjetnote.feature_note.domain.repository.NoteRepository
 import com.example.mvvmjetnote.feature_note.domain.use_case.AddNote
 import com.example.mvvmjetnote.feature_note.domain.use_case.DeleteNoteUseCase
+import com.example.mvvmjetnote.feature_note.domain.use_case.GetNote
 import com.example.mvvmjetnote.feature_note.domain.use_case.GetNotesUseCase
 import com.example.mvvmjetnote.feature_note.domain.use_case.NoteUseCase
 import dagger.Module
@@ -40,7 +41,8 @@ object AppModule {
         return NoteUseCase(
             getNotesUseCase = GetNotesUseCase(repository),
             deleteNoteUseCase = DeleteNoteUseCase(repository),
-            addNote = AddNote(repository)
+            addNote = AddNote(repository),
+            getNote = GetNote(repository)
         )
     }
 }

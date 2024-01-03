@@ -1,4 +1,4 @@
-package com.example.mvvmjetnote.feature_note.data
+package com.example.mvvmjetnote.feature_note.data.repository
 
 import com.example.mvvmjetnote.feature_note.data.data_source.NoteDao
 import com.example.mvvmjetnote.feature_note.domain.model.Note

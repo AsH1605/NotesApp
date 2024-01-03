@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.List
@@ -40,10 +41,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.mvvmjetnote.feature_note.presentation.notes.components.NoteItem
 import com.example.mvvmjetnote.feature_note.presentation.notes.components.OrderSection
+import com.example.mvvmjetnote.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun NotesScreen(
     navController: NavController,
@@ -55,17 +56,19 @@ fun NotesScreen(
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { },
-                Modifier.background(MaterialTheme.colorScheme.primary)
+                onClick = {
+                    navController.navigate(Screen.AddEditNotesScreen.route)
+                },
+//                Modifier.background(MaterialTheme.colorScheme.primary),
             ) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add Note")
             }
         }
-    ) {
+    ) {paddings->
         Column (
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp)
+                .padding(paddings)
         ){
             Row (
                 modifier = Modifier.fillMaxWidth(),
@@ -102,7 +105,10 @@ fun NotesScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-
+                                navController.navigate(
+                                    Screen.AddEditNotesScreen.route+
+                                            "?noteId=${note.id}&noteColor=${note.color}"
+                                )
                             },
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note))

@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -78,21 +79,22 @@ fun NoteItem(
                 text = note.title,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                style = TextStyle(fontSize = 24.sp, color = Color(0x000000))
+                color = Color.DarkGray,
+                fontWeight = FontWeight.Bold
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = note.content,
                 maxLines = 10,
                 overflow = TextOverflow.Ellipsis,
-                style = TextStyle(fontSize = 24.sp, color = Color(0x000000))
+                color = Color.DarkGray
             )
         }
         IconButton(onClick = onDeleteClick,
             modifier=Modifier.align(Alignment.BottomEnd)) {
             Icon(
                 imageVector = Icons.Default.Delete,
-                contentDescription = "Delete note"
+                contentDescription = "Delete note",
             )
         }
     }

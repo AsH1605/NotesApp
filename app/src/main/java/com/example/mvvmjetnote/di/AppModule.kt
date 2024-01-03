@@ -2,7 +2,7 @@ package com.example.mvvmjetnote.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.mvvmjetnote.feature_note.data.NoteRepositoryImpl
+import com.example.mvvmjetnote.feature_note.data.repository.NoteRepositoryImpl
 import com.example.mvvmjetnote.feature_note.data.data_source.NoteDatabase
 import com.example.mvvmjetnote.feature_note.domain.repository.NoteRepository
 import com.example.mvvmjetnote.feature_note.domain.use_case.AddNote
